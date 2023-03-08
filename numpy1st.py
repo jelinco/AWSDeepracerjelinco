@@ -28,7 +28,7 @@ def reward_function(params):
     reward += speed*0.5
 
     # Reward the car for staying close to the center of the track
-    reward += (1 - distance_from_center/(track_width/2))*0.5
+    reward += np.clip(1 - distance_from_center / (track_width / 2), 0, 1)
 
     # Reward for steering angle
     reward += (steering_angle - (15*np.pi/180))*0.5
